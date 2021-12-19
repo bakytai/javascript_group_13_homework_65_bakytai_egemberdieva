@@ -25,5 +25,4 @@ export class FormComponent {
       this.spinner = isFetching;
     });
   }
-
 }

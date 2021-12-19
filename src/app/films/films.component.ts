@@ -36,6 +36,7 @@ export class FilmsComponent implements OnInit, OnDestroy {
     this.filmsChangeSubscription = this.filmService.filmsChange.subscribe((films: Film[]) => {
       this.films = films;
     });
+    this.films = this.filmService.getFilms();
   }
 
 
