@@ -1,0 +1,9 @@
+<form class="col-6 mt-3" (ngSubmit)="addNewFilm()">
+  <div class="input-group mb-3">
+    <input #nameInput class="form-control" placeholder="new film" aria-label="new film" aria-describedby="button-addon2">
+    <button *ngIf="!spinner" class="btn btn-outline-secondary ml-3" type="submit" id="button-addon2">Add</button>
+    <div class="spinner-border" *ngIf="spinner">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</form>
