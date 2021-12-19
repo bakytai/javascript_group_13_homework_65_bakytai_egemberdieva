@@ -37,6 +37,7 @@ export class FilmService {
   deleteFilm(index: string) {
     this.http.delete(`https://plovo-13-default-rtdb.firebaseio.com/films/${index}.json`).subscribe();
     this.fetchFilms();
+    this.filmsChange.next(this.films);
   }
 
   getFilms() {

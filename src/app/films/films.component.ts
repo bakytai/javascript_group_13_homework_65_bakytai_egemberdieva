@@ -2,7 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { Film } from '../shared/film.model';
 import { FilmService } from '../shared/film.service';
-import { HttpClient } from '@angular/common/http';
 
 
 @Component({
@@ -16,7 +15,7 @@ export class FilmsComponent implements OnInit, OnDestroy {
   filmsFetchingSubscription!: Subscription;
   isFetching: boolean = false;
 
-  constructor(private filmService: FilmService, private http: HttpClient) {}
+  constructor(private filmService: FilmService) {}
 
   ngOnInit() {
     this.films = this.filmService.getFilms();
@@ -34,6 +33,9 @@ export class FilmsComponent implements OnInit, OnDestroy {
   onDelete(index: string) {
     this.filmService.deleteFilm(index);
     this.films = this.filmService.getFilms();
+    this.filmsChangeSubscription = this.filmService.filmsChange.subscribe((films: Film[]) => {
+      this.films = films;
+    });
   }
 
 
